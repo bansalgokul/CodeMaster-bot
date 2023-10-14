@@ -56,7 +56,13 @@ client.on("interactionCreate", async (interaction) => {
 	if (!command) return;
 
 	try {
+		// Defer the initial response
+		await interaction.deferReply();
+
 		await command.execute(interaction);
+
+		// If your command executes successfully, follow up with a response
+		await interaction.editReply("Command executed successfully");
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({
