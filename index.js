@@ -53,16 +53,10 @@ client.on("interactionCreate", async (interaction) => {
 	const { commandName, options } = interaction;
 	const command = client.commands.get(commandName);
 
-	if (!command) return;
+	if (!command || interaction.replied) return;
 
 	try {
-		// Defer the initial response
-		await interaction.deferReply();
-
 		await command.execute(interaction);
-
-		// If your command executes successfully, follow up with a response
-		await interaction.editReply("Command executed successfully");
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({
