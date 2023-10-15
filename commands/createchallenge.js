@@ -60,13 +60,12 @@ module.exports = {
 		const startDateString = interaction.options.getString("start_date");
 		const endDateString = interaction.options.getString("end_date");
 
-		// Check if the user has the necessary permissions (e.g., server admin)
-		if (!interaction.member.permissions.has("ADMINISTRATOR")) {
-			await interaction.reply(
-				"You do not have permission to create challenges."
-			);
-			return;
-		}
+		// // Check if the user has the necessary permissions (e.g., server admin)
+		// if (!interaction.member.permissions.has("ADMINISTRATOR")) {
+		// 		"You do not have permission to create challenges."
+		// 	);
+		// 	return;
+		// }
 
 		// Validate the start date
 		if (!isValidDate(startDateString)) {
